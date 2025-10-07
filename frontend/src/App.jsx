@@ -42,6 +42,16 @@ const RedirectAuthenticatedUser = ({ children }) => {
   return children;
 };
 
+export const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pathname]);
+
+  return null;
+};
+
 function App() {
   const [isExpanded, setIsExpanded] = useState(false);
   const { isCheckingAuth, checkAuth } = useAuthStore();
@@ -55,11 +65,11 @@ function App() {
 
   useEffect(() => {
     setIsExpanded(false);
-    // Call the callback whenever the pathname changes
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
+    console.log('change')
   }, [location.pathname]);
 
   useEffect(() => {
@@ -72,7 +82,7 @@ function App() {
     <div
       className={`${
         isDashboard && "flex"
-      } relative min-h-screen overflow-hidden`}
+      } relative h-screen overflow-hidden`}
     >
       {(isDashboard && (
         <Sidebar isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
@@ -80,7 +90,7 @@ function App() {
 
       <div
         className={`overflow-y-auto w-full h-screen bg-white transition-all duration-300 ease-in-out ${
-          isDashboard && "pl-20 lg:pl-0"
+          isDashboard && "pl-13 lg:pl-0"
         }`}
       >
         {isExpanded && isDashboard && (

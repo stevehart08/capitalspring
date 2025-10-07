@@ -194,7 +194,7 @@ const ContactSection = () => {
 };
 
 const handleSubmit = (e) => {
-  e.preventDefault();
+  // e.preventDefault();
 }
 
 export default ContactPage;

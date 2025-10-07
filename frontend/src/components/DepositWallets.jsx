@@ -43,7 +43,7 @@ const DepositWallets = ({ openDeposit, setOpenDeposit }) => {
             exit={{ opacity: 0, scale: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="bg-white rounded-lg shadow-lg w-full max-w-[80%] mx-auto p-6">
+            <div className="bg-white rounded-lg shadow-lg w-ful w-[300px] sm:w-[450px] mx-auto p-6">
               <h2 className="text-2xl font-semibold mb-6 text-center">
                 Deposit Wallets
               </h2>

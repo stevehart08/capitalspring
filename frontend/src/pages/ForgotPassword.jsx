@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 
 const ForgotPasswordPage = () => {
   const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("HHH");
+    // e.preventDefault();
   };
 
   return (

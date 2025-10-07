@@ -7,6 +7,7 @@ import { Link, NavLink } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import { FaRegStar } from "react-icons/fa";
 import { useState } from "react";
+import { useAuthStore } from "../store/authStore";
 
 const cryptoData = [
   { symbol: "BTC", price: "$121,764", change: "-0.7%" },
@@ -30,6 +31,7 @@ const navLinks = [
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { isAuthenticated } = useAuthStore();
 
   return (
     <motion.div
@@ -67,31 +69,46 @@ const Header = () => {
         </div>
 
         {/* Right Buttons */}
-        <div className="hidden md:flex gap-4">
-          {/* Login */}
-          <div className="relative lg:w-24">
-            <Link
-              to="/signin"
-              className="inline-flex items-center rounded-xl lg:rounded-full bg-gray-100 text-black px-4 lg:px-6 py-3 text-sm font-bold transform transition-all duration-700 ease-in-out group relative overflow-hidden"
-            >
-              <span className="z-10 relative">Login</span>
-              <MdChevronRight className="hidden lg:block z-10 relative opacity-0 group-hover:opacity-100 transform transition-transform duration-700 ease-in-out group-hover:translate-x-2" />
-              <div className="absolute rounded-full inset-0 bg-gradient-to-r from-gray-200 to-gray-300 hidden group-hover:block transition-all duration-700 ease-in-out opacity-0 group-hover:opacity-100"></div>
-            </Link>
+        {(isAuthenticated && (
+          <div className="hidden md:flex">
+            <div className="relative lg:w-24">
+              <Link
+                to="/dashboard"
+                className="inline-flex items-center rounded-4xl lg:rounded-full bg-[#a06eff] text-white px-3 lg:px-6 py-3 text-sm font-bold transform transition-all duration-700 ease-in-out group relative overflow-hidden"
+              >
+                <span className="z-10 relative">Dashboard</span>
+                <MdChevronRight className="hidden lg:block z-10 relative opacity-0 group-hover:opacity-100 transform group-hover:translate-x-2 transition-all duration-700 ease-in-out" />
+                <div className="absolute rounded-full inset-0 bg-gradient-to-r from-[#a06eff] to-[#8057cc] opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out"></div>
+              </Link>
+            </div>
           </div>
+        )) || (
+          <div className="hidden md:flex gap-4">
+            {/* Login */}
+            <div className="relative lg:w-24">
+              <Link
+                to="/signin"
+                className="inline-flex items-center rounded-xl lg:rounded-full bg-gray-100 text-black px-4 lg:px-6 py-3 text-sm font-bold transform transition-all duration-700 ease-in-out group relative overflow-hidden"
+              >
+                <span className="z-10 relative">Login</span>
+                <MdChevronRight className="hidden lg:block z-10 relative opacity-0 group-hover:opacity-100 transform transition-transform duration-700 ease-in-out group-hover:translate-x-2" />
+                <div className="absolute rounded-full inset-0 bg-gradient-to-r from-gray-200 to-gray-300 hidden group-hover:block transition-all duration-700 ease-in-out opacity-0 group-hover:opacity-100"></div>
+              </Link>
+            </div>
 
-          {/* Register */}
-          <div className="relative lg:w-44">
-            <Link
-              to="/signup"
-              className="inline-flex items-center rounded-xl lg:rounded-full bg-[#a06eff] text-white px-3 lg:px-6 py-3 text-sm font-bold transform transition-all duration-700 ease-in-out group relative overflow-hidden"
-            >
-              <span className="z-10 relative">Register Now</span>
-              <MdChevronRight className="hidden lg:block z-10 relative opacity-0 group-hover:opacity-100 transform group-hover:translate-x-2 transition-all duration-700 ease-in-out" />
-              <div className="absolute rounded-full inset-0 bg-gradient-to-r from-[#a06eff] to-[#8057cc] opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out"></div>
-            </Link>
+            {/* Register */}
+            <div className="relative lg:w-44">
+              <Link
+                to="/signup"
+                className="inline-flex items-center rounded-xl lg:rounded-full bg-[#a06eff] text-white px-3 lg:px-6 py-3 text-sm font-bold transform transition-all duration-700 ease-in-out group relative overflow-hidden"
+              >
+                <span className="z-10 relative">Register Now</span>
+                <MdChevronRight className="hidden lg:block z-10 relative opacity-0 group-hover:opacity-100 transform group-hover:translate-x-2 transition-all duration-700 ease-in-out" />
+                <div className="absolute rounded-full inset-0 bg-gradient-to-r from-[#a06eff] to-[#8057cc] opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out"></div>
+              </Link>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Mobile Menu Icon */}
         <button
@@ -105,18 +122,20 @@ const Header = () => {
       {/* Crypto Ticker */}
       <div className="w-full border-y border-[#a06eff] bg-[#f5f4f4] overflow-hidden">
         <div className="flex animate-scroll whitespace-nowrap py-1">
-          {cryptoData
-            .concat(cryptoData)
-            .map(({ symbol, price, change }, idx) => (
-              <div
-                key={`${symbol}-${idx}`}
-                className="inline-flex items-center mx-4"
-              >
-                <span className="text-gray-400 font-medium">{symbol}</span>
-                <span className="text-purple-600 ml-2">{price}</span>
-                <span className="ml-2 text-red-400">{change}</span>
-              </div>
-            ))}
+          <div className="scroll-content flex">
+            {cryptoData
+              .concat(cryptoData)
+              .map(({ symbol, price, change }, idx) => (
+                <div
+                  key={`${symbol}-${idx}`}
+                  className="inline-flex items-center mx-4"
+                >
+                  <span className="text-gray-400 font-medium">{symbol}</span>
+                  <span className="text-purple-600 ml-2">{price}</span>
+                  <span className="ml-2 text-red-400">{change}</span>
+                </div>
+              ))}
+          </div>
         </div>
       </div>
 
@@ -126,6 +145,8 @@ const Header = () => {
 };
 
 const MobileMenu = ({ onClose }) => {
+  const { isAuthenticated } = useAuthStore();
+
   return (
     <motion.div
       className="fixed inset-0 bg-white z-40 md:hidden"
@@ -164,23 +185,36 @@ const MobileMenu = ({ onClose }) => {
         </div>
 
         {/* Bottom Buttons */}
-        <div className="space-y-4 pb-12">
-          <Link
-            to="/signin"
-            onClick={onClose}
-            className="block w-full text-center rounded-full border border-[#a06eff] text-[#a06eff] px-6 py-4 text-base font-bold hover:bg-[#a06eff] hover:text-white transition-all duration-300"
-          >
-            Login
-          </Link>
-          <Link
-            to="/signup"
-            onClick={onClose}
-            className="w-full text-center inline-flex items-center justify-center gap-2 rounded-full bg-[#a06eff] text-white px-6 py-4 text-base font-bold transform hover:scale-105 transition-transform duration-300 ease-in-out"
-          >
-            <FaRegStar />
-            Register Now
-          </Link>
-        </div>
+        {(isAuthenticated && (
+          <div className="pb-12 pt-10">
+            <Link
+              to="/dashboard"
+              onClick={onClose}
+              className="w-full text-center inline-flex items-center justify-center gap-2 rounded-full bg-[#a06eff] text-white px-6 py-4 text-base font-bold transform hover:scale-105 transition-transform duration-300 ease-in-out"
+            >
+              <FaRegStar />
+              Dashboard
+            </Link>
+          </div>
+        )) || (
+          <div className="space-y-4 pb-12">
+            <Link
+              to="/signin"
+              onClick={onClose}
+              className="block w-full text-center rounded-full border border-[#a06eff] text-[#a06eff] px-6 py-4 text-base font-bold hover:bg-[#a06eff] hover:text-white transition-all duration-300"
+            >
+              Login
+            </Link>
+            <Link
+              to="/signup"
+              onClick={onClose}
+              className="w-full text-center inline-flex items-center justify-center gap-2 rounded-full bg-[#a06eff] text-white px-6 py-4 text-base font-bold transform hover:scale-105 transition-transform duration-300 ease-in-out"
+            >
+              <FaRegStar />
+              Register Now
+            </Link>
+          </div>
+        )}
       </div>
     </motion.div>
   );

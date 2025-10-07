@@ -18,37 +18,38 @@ function Dashboard() {
 
   return (
     <main className="p-0 sm:p-4 md:p-8 mx-auto w-full">
-      <div className="container mx-auto px-2 sm:px-6 max-w-7xl space-y-8">
+      <div className="container mx-auto px-2 sm:px-6 max-w-7xl space-y-8 pb-20">
         <div className="bg-white shadow-lg rounded-xl overflow-hidden">
-          <div className="flex justify-between items-center p-8 border-b border-gray-100">
+          <div className="flex justify-between items-center py-8 px-4 sm:px-8 border-b border-gray-100">
             <div>
-              <h1 className="text-3xl font-bold text-gray-800 mb-3">
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">
                 Welcome, <span className="capitalize">{userName}</span>
               </h1>
               <div>
                 {(user.isVerified && (
-                  <span className="px-3 py-1.5 inline-flex gap-1 items-center text-sm leading-5 font-medium rounded-full bg-green-100 text-green-800">
-                    <FaCheckCircle className="text-green-600 size-4" />
+                  <span className="px-3 py-1 sm:py-1.5 inline-flex gap-1 items-center text-[12px] sm:text-sm leading-5 font-medium rounded-full bg-green-100 text-green-800">
+                    <FaCheckCircle className="text-green-600 size-3.5 sm:size-4" />
                     Account verified
                   </span>
                 )) || (
-                  <span className="px-3 py-1.5 inline-flex gap-1 items-center text-sm leading-5 font-medium rounded-full bg-yellow-100 text-yellow-800">
-                    <FaExclamationTriangle className="text-yellow-600 size-4" />
-                    Pending verification
+                  <span className="px-3 py-1 sm:py-1.5 inline-flex gap-1 items-center text-[12px] sm:text-sm leading-5 font-medium rounded-full bg-yellow-100 text-yellow-800">
+                    <FaExclamationTriangle className="text-yellow-600 size-3.5 sm:size-4" />
+                    Pending Verification
                   </span>
                 )}
               </div>
             </div>
             <div>
-              <FaWallet className="text-[#a06eff] size-10" />
+              <FaWallet className="text-[#a06eff] size-8 sm:size-10" />
             </div>
           </div>
-          <div className="p-8">
+
+          <div className="py-8 px-4 sm:px-8">
             <div className="mb-8">
-              <h2 className="text-xl font-semibold text-gray-600 mb-4">
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-600 mb-4">
                 Total Balance Overview
               </h2>
-              <p className="text-5xl font-bold text-[#a06eff] mb-6">
+              <p className="text-3xl sm:text-5xl font-bold text-[#a06eff] mb-6">
                 ${formatNumber(user.totalBalance)}{" "}
                 <span className="text-2xl text-gray-500">USD</span>
               </p>
@@ -102,7 +103,7 @@ function Dashboard() {
               </div>
             </div>
             <button
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 rounded-xl bg-[#a06eff] text-white px-8 py-3 text-lg font-medium hover:bg-[#5c3c97] transition-all shadow-lg hover:shadow-xl"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 rounded-xl bg-[#a06eff] text-white px-4 sm:px-8 py-3 text-lg font-medium hover:bg-[#5c3c97] transition-all shadow-lg hover:shadow-xl"
               onClick={() => setOpenDeposit(true)}
             >
               <span>Deposit Funds</span>
@@ -119,7 +120,8 @@ function Dashboard() {
               </svg>
             </button>
           </div>
-          <div className="border-t border-gray-100 p-8">
+
+          <div className="border-t border-gray-100 py-8 px-4 sm:px-8">
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8 gap-6">
               <div>
                 <h2 className="text-2xl font-bold text-gray-800 mb-2">
@@ -129,31 +131,31 @@ function Dashboard() {
                   Track your investment portfolio performance
                 </p>
               </div>
-              <div className="bg-[#a06eff]/10 px-6 py-3 rounded-xl">
+              <div className="bg-[#a06eff]/10 px-3 sm:px-6 py-3 rounded-xl">
                 <span className="text-sm text-gray-600 mr-2">
                   Total Invested:{" "}
                 </span>
-                <span className="text-xl font-bold text-[#a06eff]">$0.00</span>
+                <span className="text-lg sm:text-xl font-bold text-[#a06eff]">$0.00</span>
               </div>
             </div>
             <div className="w-full">
-              <div className="text-center py-16 bg-gray-50 rounded-xl">
+              <div className="text-center px-2 py-16 bg-gray-50 rounded-xl">
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
                   strokeWidth="0"
                   viewBox="0 0 512 512"
-                  className="mx-auto mb-4 text-5xl text-gray-400"
+                  className="mx-auto mb-4 text-3xl sm:text-5xl text-gray-400"
                   height="1em"
                   width="1em"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path>
                 </svg>
-                <h3 className="text-2xl font-semibold text-gray-700 mb-3">
+                <h3 className="text-xl sm:text-2xl font-semibold text-gray-700 mb-3">
                   No Active Investments
                 </h3>
-                <p className="text-gray-500 max-w-md mx-auto text-lg">
+                <p className="text-gray-500 max-w-md mx-auto text-[15px] sm:text-lg">
                   Start investing now to build your portfolio and track your
                   investments in real-time.
                 </p>
@@ -161,6 +163,7 @@ function Dashboard() {
             </div>
           </div>
         </div>
+
         <div className="space-y-8">
           <div className="bg-white rounded-xl shadow-sm border border-gray-100">
             <div className="p-4 flex items-center justify-between border-b border-gray-100">

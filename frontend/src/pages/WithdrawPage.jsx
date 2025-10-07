@@ -4,20 +4,20 @@ import { FaWallet } from "react-icons/fa";
 const WithdrawPage = () => {
   return (
     <main className="p-0 sm:p-4 md:p-8 mx-auto w-full">
-      <div className="container mx-auto px-4 py-5 max-w-7xl space-y-8">
+      <div className="container mx-auto px-2 sm:px-4 py-5 max-w-7xl space-y-8">
         <div className="bg-white shadow-md rounded-lg overflow-hidden">
-          <div className="flex flex-row justify-between items-center p-6 border-b border-gray-300">
+          <div className="flex flex-row justify-between items-center py-6 px-3 sm:px-6 border-b border-gray-300">
             <div className="space-y-2">
               <h1 className="text-2xl font-bold text-gray-800">
                 Withdraw Funds
               </h1>
             </div>
             <div className="p-3 bg-[#a06eff]/10 rounded-full">
-              <FaWallet className="text-[#a06eff] size-10" />
+              <FaWallet className="text-[#a06eff] size-7 sm:size-10" />
             </div>
           </div>
 
-          <div className="p-6">
+          <div className="py-6 px-3 sm:px-6">
             <h2 className="text-lg font-semibold text-gray-700 mb-4">
               Select Coin
             </h2>
@@ -28,7 +28,7 @@ const WithdrawPage = () => {
               <button
                 type="submit"
                 disabled
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-[#a06eff] text-white px-6 py-3 font-medium hover:bg-[#5c3c97] transition-all disabled:bg-gray-400 disabled:cursor-not-allowed hover:shadow-lg"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-[#a06eff] text-white px-3 sm:px-6 py-3 font-medium hover:bg-[#5c3c97] transition-all disabled:bg-gray-400 disabled:cursor-not-allowed hover:shadow-lg"
               >
                 <span>Request Withdrawal</span>
                 <svg
@@ -43,6 +43,7 @@ const WithdrawPage = () => {
             </form>
           </div>
         </div>
+
         <WithdrawalHistory />
       </div>
     </main>
@@ -55,9 +56,9 @@ const WithdrawalHistory = () => {
       className="bg-white shadow-md rounded-lg overflow-hidden mt-5"
       style={{ opacity: 1, transform: "none" }}
     >
-      <div className="p-6 border-b border-gray-300 flex justify-between items-center">
-        <h2 className="text-xl font-bold text-gray-800">Withdrawal History</h2>
-        <div className="flex items-center gap-2 text-sm text-gray-500">
+      <div className="py-6 px-3 sm:px-6 border-b border-gray-300 flex justify-between items-center">
+        <h2 className="text-lg sm:text-xl font-bold text-gray-800">Withdrawal History</h2>
+        <div className="flex items-center gap-2 text-[12px] sm:text-sm text-gray-500">
           <svg
             stroke="currentColor"
             fill="currentColor"

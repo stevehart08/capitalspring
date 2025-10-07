@@ -58,7 +58,7 @@ const HeroSection = () => {
 
   return (
     <motion.div
-      className="relative h-screen overflow-hidden flex flex-col items-center pt-20 md:pt-0 justify-center z-0"
+      className="relative h-screen overflow-hidden flex flex-col items-center pb-10 md:pt-0 justify-center z-0"
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8 }}
@@ -78,7 +78,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="z-10 text-left max-w-xs md:max-w-2xl lg:max-w-5xl mx-auto text-white">
+      <div className="z-10 text-left max-w-[300px] md:max-w-2xl lg:max-w-5xl mx-auto text-white">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -101,7 +101,7 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.h1
-          className="text-5xl md:text-8xl mb-3"
+          className="text-4xl sm:text-5xl md:text-8xl mb-3"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}

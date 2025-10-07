@@ -1,6 +1,26 @@
 @import "tailwindcss";
 
 @tailwind utilities;
+
+
+.animate-scroll {
+  overflow: hidden;
+  position: relative;
+}
+
+.scroll-content {
+  animation: scroll-left 20s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 /* 
 /* latin-ext */
 /* @font-face {

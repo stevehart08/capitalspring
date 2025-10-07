@@ -154,19 +154,19 @@ const Investment = () => {
     <main className="p-0 sm:p-4 md:p-8 mx-auto w-full">
       <div className="container mx-auto px-0 sm:px-4 py-8">
         <div className="bg-white overflow-hidden">
-          <div className="p-4 flex justify-between items-end">
+          <div className="py-4 px-3 sm:px-4 flex justify-between items-end">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
                 Investment Plans
               </h1>
-              <p className="mt-2 text-gray-500">
+              <p className="mt-2 text-sm text-gray-500">
                 Choose your investment strategy
               </p>
             </div>
           </div>
 
           {/* Crypto Balances */}
-          <div className="p-4">
+          <div className="py-4 px-3 sm:px-4">
             <div className="flex flex-wrap gap-4">
               <CryptoCard name="Bitcoin" symbol="BTC" />
               <CryptoCard name="Ethereum" symbol="ETH" />
@@ -175,7 +175,7 @@ const Investment = () => {
           </div>
 
           {/* Future Plan Cards */}
-          <div className="p-6">
+          <div className="py-6 px-3 sm:px-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {/* Placeholder for future investment plan cards */}
               {investmentPlans.map((e) => (
@@ -193,7 +193,7 @@ const Investment = () => {
           </div>
 
           {/* Disclaimer */}
-          <div className="p-6 border-t border-gray-300 bg-[#a06eff]/10">
+          <div className="py-6 px-3 sm:px-6 border-t border-gray-300 bg-[#a06eff]/10">
             <div className="flex items-start space-x-3">
               <svg
                 viewBox="0 0 16 16"
